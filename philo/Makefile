@@ -9,10 +9,10 @@ CFLAGS		= -g3 -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	cc $(FLAGS) -lpthread -o $(NAME) $(OBJS)
+	cc $(CFLAGS) -o $(NAME) $(OBJS) -lpthread
 
 %.o : %.c
-	cc $(FLAGS) -I ./includes -c $< -o $@
+	cc $(CFLAGS) -I ./includes -c $< -o $@
 
 clean :
 	rm -rf $(OBJS)
