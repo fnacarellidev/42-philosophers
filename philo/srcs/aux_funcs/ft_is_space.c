@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   ft_is_space.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/03 12:49:02 by fnacarel         ###   ########.fr       */
+/*   Created: 2023/05/03 12:35:56 by fnacarel          #+#    #+#             */
+/*   Updated: 2023/05/03 12:36:35 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
-# include "libs.h"
+#include "../includes/philosophers.h"
 
-int	ft_is_space(char c);
-
-#endif
+int	ft_is_space(char c)
+{
+	if (c == 32 || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
+}

@@ -1,7 +1,9 @@
 NAME		= philo
 SRCS_PATH	= ./srcs
 
-FILES		= philosophers
+FILES		= philosophers \
+			  aux_funcs/ft_is_space \
+
 SRCS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .o, $(FILES)))
 CFLAGS		= -g3 -Wall -Wextra -Werror
