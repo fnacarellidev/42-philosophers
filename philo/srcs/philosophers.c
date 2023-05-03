@@ -11,9 +11,25 @@
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
 
+static void	init_philos(t_table *table)
+{
+	int		i;
+	t_philo	*curr_philo;
+
+	i = 0;
+	table->philo = malloc(sizeof(t_philo) * table->nbr_of_philos);
+	while (i < table->nbr_of_philos)
+	{
+		curr_philo = (table->philo) + i;
+		curr_philo->id = i;
+		i++;
+	}
+}
+
 static void	init_table(t_table *table, char **argv)
 {
 	table->nbr_of_philos = ft_atol(argv[1]);
+	init_philos(table);
 }
 
 int	main(int argc, char **argv)

@@ -15,8 +15,14 @@
 # include "libs.h"
 # include "ft_errors.h"
 
+typedef struct s_philo
+{
+	int				id;
+}	t_philo;
+
 typedef struct s_table
 {
+	t_philo		*philo;
 	int			nbr_of_philos;
 }	t_table;
 
