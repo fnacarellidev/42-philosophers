@@ -75,6 +75,18 @@ static int	is_number(char *str)
 	return (1);
 }
 
+static int	has_non_numeric_param(char **args)
+{
+	int		i;
+
+	i = 1;
+	while (args[i])
+	{
+		if (!is_number(args[i]))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 static int	valid_args(int params, char **args)
@@ -84,6 +96,8 @@ static int	valid_args(int params, char **args)
 		print_error(1);
 		return (0);
 	}
+	else if (has_non_numeric_param(args))
+		return (0);
 	return (1);
 }
 
