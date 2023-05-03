@@ -98,6 +98,16 @@ static int	out_of_range(char **args)
 	return (0);
 }
 
+static int	valid_philos(char *philos_nptr)
+{
+	long int	number;
+
+	number = ft_atol(philos_nptr);
+	if (number <= 0 || number > PH_MAX_INT)
+		return (0);
+	return (1);
+}
+
 static int	valid_args(int params, char **args)
 {
 	if (params != 4 && params != 5)
@@ -120,6 +130,8 @@ static int	valid_args(int params, char **args)
 		print_error(4);
 		return (0);
 	}
+	else if (!valid_philos(args[1]))
+		return (0);
 	return (1);
 }
 
