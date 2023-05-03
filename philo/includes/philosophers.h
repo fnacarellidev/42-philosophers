@@ -18,6 +18,8 @@
 typedef struct s_philo
 {
 	int				id;
+	pthread_mutex_t	fork;
+	pthread_mutex_t	*fork_left;
 }	t_philo;
 
 typedef struct s_table

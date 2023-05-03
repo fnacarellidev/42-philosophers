@@ -22,6 +22,7 @@ static void	init_philos(t_table *table)
 	{
 		curr_philo = (table->philo) + i;
 		curr_philo->id = i;
+		pthread_mutex_init(&curr_philo->fork, NULL);
 		i++;
 	}
 }
