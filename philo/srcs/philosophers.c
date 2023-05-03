@@ -52,6 +52,19 @@ static void	init_table(t_table *table, char **argv)
 	init_philos_forks(table);
 }
 
+static void	die(t_table *table)
+{
+	int	i;
+
+	i = 0;
+	while (i < table->nbr_of_philos)
+	{
+		pthread_mutex_destroy(&table->philo[i].fork);
+		i++;
+	}
+	free(table->philo);
+}
+
 int	main(int argc, char **argv)
 {
 	t_table		table;
@@ -59,5 +72,6 @@ int	main(int argc, char **argv)
 	if (!valid_args(argc - 1, argv))
 		return (1);
 	init_table(&table, argv);
+	die(&table);
 	return (0);
 }
