@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
+# define PH_MAX_INT 2147483647
 # include "libs.h"
 
 int			ft_is_space(char c);
