@@ -2,6 +2,7 @@ NAME		= philo
 SRCS_PATH	= ./srcs
 
 FILES		= philosophers \
+			  aux_funcs/is_number \
 			  aux_funcs/ft_is_space \
 			  aux_funcs/ft_is_digit \
 			  aux_funcs/ft_is_sign \

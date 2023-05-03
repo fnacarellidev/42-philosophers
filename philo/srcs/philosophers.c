@@ -38,28 +38,6 @@ static int	print_error(int err_code)
 	return (0);
 }
 
-static int	is_number(char *str)
-{
-	int	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (ft_is_space(str[i]))
-		i++;
-	if (ft_is_sign(str[i]))
-		i++;
-	if (!ft_is_digit(str[i]))
-		return (0);
-	while (ft_is_digit(str[i]))
-		i++;
-	while (ft_is_space(str[i]))
-		i++;
-	if (str[i])
-		return (0);
-	return (1);
-}
-
 static int	has_non_numeric_param(char **args)
 {
 	int		i;
