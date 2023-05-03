@@ -27,10 +27,29 @@ static void	init_philos(t_table *table)
 	}
 }
 
+static void	init_philos_forks(t_table *table)
+{
+	int		i;
+	int		left_idx;
+	int		philos_qty;
+	t_philo	*curr_philo;
+
+	i = 0;
+	philos_qty = table->nbr_of_philos;
+	while (i < philos_qty)
+	{
+		curr_philo = (table->philo) + i;
+		left_idx = (i + philos_qty - 1) % philos_qty;
+		curr_philo->fork_left = &(table->philo[left_idx].fork);
+		i++;
+	}
+}
+
 static void	init_table(t_table *table, char **argv)
 {
 	table->nbr_of_philos = ft_atol(argv[1]);
 	init_philos(table);
+	init_philos_forks(table);
 }
 
 int	main(int argc, char **argv)
