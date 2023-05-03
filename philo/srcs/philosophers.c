@@ -30,6 +30,11 @@ static void	print_error(int err_code)
 	}
 	else if (err_code == 4)
 		write(2, "Error: Numbers above (2^31) - 1 are not valid \n", 47);
+	else if (err_code == 5)
+	{
+		write(2, "Error: Number of philos must be greater than 0 and " \
+				"less than (2^31) - 1\n", 73);
+	}
 }
 
 static int	is_number(char *str)
@@ -131,7 +136,10 @@ static int	valid_args(int params, char **args)
 		return (0);
 	}
 	else if (!valid_philos(args[1]))
+	{
+		print_error(5);
 		return (0);
+	}
 	return (1);
 }
 
