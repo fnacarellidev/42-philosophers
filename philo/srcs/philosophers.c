@@ -49,7 +49,7 @@ static void	print_error(int err_code)
 {
 	if (err_code == 1)
 	{
-		write(2, "Usage: number_of_philos time_to_die time_to_eat" \
+		write(2, "Usage: number_of_philos time_to_die time_to_eat " \
 			"time_to_sleep [number_of_times_each_philo_eats]\n", 96);
 	}
 }
