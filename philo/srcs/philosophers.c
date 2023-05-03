@@ -84,7 +84,7 @@ static int	is_number(char *str)
 	i = 0;
 	while (ft_is_space(str[i]))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (ft_is_sign(str[i]))
 		i++;
 	if (!ft_is_digit(str[i]))
 		return (0);
