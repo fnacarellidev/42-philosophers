@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:46:52 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/03 12:47:37 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:16:41 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/philosophers.h"
+#include "../../includes/philosophers.h"
 
 int	ft_is_digit(char c)
 {

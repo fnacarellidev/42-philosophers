@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:35:56 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/03 12:36:35 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:16:47 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/philosophers.h"
+#include "../../includes/philosophers.h"
 
 int	ft_is_space(char c)
 {
