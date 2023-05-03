@@ -68,6 +68,11 @@ static void	print_error(int err_code)
 		write(2, "Error: Non numeric parameter detected, pass only int params" \
 			" to the program\n", 75);
 	}
+	else if (err_code == 3)
+	{
+		write(2, "Error: Can't receive negative numbers as parameters, only " \
+			"positive integers, please\n", 84);
+	}
 }
 
 static int	is_number(char *str)
@@ -133,7 +138,10 @@ static int	valid_args(int params, char **args)
 		return (0);
 	}
 	else if (has_negative_number(args))
+	{
+		print_error(3);
 		return (0);
+	}
 	return (1);
 }
 
