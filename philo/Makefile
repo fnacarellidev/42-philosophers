@@ -3,7 +3,8 @@ SRCS_PATH	= ./srcs
 
 FILES		= philosophers \
 			  aux_funcs/ft_is_space \
-			  aux_funcs/ft_is_digit
+			  aux_funcs/ft_is_digit \
+			  aux_funcs/ft_is_sign
 
 SRCS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .o, $(FILES)))
