@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:58:05 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/03 15:58:24 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:25:24 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philosophers.h"
@@ -37,4 +37,3 @@ int	print_error(int err_code)
 	}
 	return (0);
 }
-

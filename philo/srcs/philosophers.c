@@ -6,14 +6,14 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:55:31 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/03 16:19:05 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:25:05 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
 
 static int	has_non_numeric_param(char **args)
 {
-	int		i;
+	int	i;
 
 	i = 1;
 	while (args[i])
@@ -80,7 +80,7 @@ static int	valid_args(int params, char **args)
 	return (1);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (!valid_args(argc - 1, argv))
 		return (1);

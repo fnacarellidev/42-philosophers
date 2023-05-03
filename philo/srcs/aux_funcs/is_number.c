@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:50:01 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/03 15:50:15 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:25:18 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philosophers.h"
@@ -32,4 +32,3 @@ int	is_number(char *str)
 		return (0);
 	return (1);
 }
-
