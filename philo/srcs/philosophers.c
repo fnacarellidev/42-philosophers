@@ -66,7 +66,7 @@ static void	print_error(int err_code)
 	else if (err_code == 2)
 	{
 		write(2, "Error: Non numeric parameter detected, pass only int params" \
-			"to the program\n", 74);
+			" to the program\n", 75);
 	}
 }
 
