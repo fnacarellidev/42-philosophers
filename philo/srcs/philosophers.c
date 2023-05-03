@@ -28,6 +28,8 @@ static void	print_error(int err_code)
 		write(2, "Error: Can't receive negative numbers as parameters, only " \
 			"positive integers, please\n", 84);
 	}
+	else if (err_code == 4)
+		write(2, "Error: Numbers above (2^31) - 1 are not valid \n", 47);
 }
 
 static int	is_number(char *str)
@@ -114,7 +116,10 @@ static int	valid_args(int params, char **args)
 		return (0);
 	}
 	else if (out_of_range(args))
+	{
+		print_error(4);
 		return (0);
+	}
 	return (1);
 }
 
