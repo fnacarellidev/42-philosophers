@@ -80,6 +80,22 @@ static int	has_negative_number(char **args)
 	return (0);
 }
 
+static int	out_of_range(char **args)
+{
+	int			i;
+	long int	number;
+
+	i = 1;
+	while (args[i])
+	{
+		number = ft_atol(args[i]);
+		if (number < 0 || number > PH_MAX_INT)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 static int	valid_args(int params, char **args)
 {
 	if (params != 4 && params != 5)
@@ -97,6 +113,8 @@ static int	valid_args(int params, char **args)
 		print_error(3);
 		return (0);
 	}
+	else if (out_of_range(args))
+		return (0);
 	return (1);
 }
 
