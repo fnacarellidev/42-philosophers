@@ -52,6 +52,12 @@ static void	print_error(int err_code)
 		write(2, "Usage: number_of_philos time_to_die time_to_eat " \
 			"time_to_sleep [number_of_times_each_philo_eats]\n", 96);
 	}
+	else if (err_code == 2)
+	{
+		write(2, "Error: Non numeric parameter detected, pass only int params" \
+			"to the program\n", 74);
+	}
+}
 
 static int	is_number(char *str)
 {
@@ -97,7 +103,10 @@ static int	valid_args(int params, char **args)
 		return (0);
 	}
 	else if (has_non_numeric_param(args))
+	{
+		print_error(2);
 		return (0);
+	}
 	return (1);
 }
 
