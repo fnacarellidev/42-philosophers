@@ -117,15 +117,15 @@ static int	valid_philos(char *philos_nptr)
 static int	valid_args(int params, char **args)
 {
 	if (params != 4 && params != 5)
-		return (print_error(1));
+		return (print_error(EPARAM));
 	else if (has_non_numeric_param(args))
-		return (print_error(2));
+		return (print_error(ENOTNUMPARAM));
 	else if (has_negative_number(args))
-		return (print_error(3));
+		return (print_error(ELESSZERO));
 	else if (out_of_range(args))
-		return (print_error(4));
+		return (print_error(EINTRANGE));
 	else if (!valid_philos(args[1]))
-		return (print_error(5));
+		return (print_error(EPHILO));
 	return (1);
 }
 
