@@ -6,12 +6,12 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:55:31 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/03 14:26:40 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:25:50 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
 
-static void	print_error(int err_code)
+static int	print_error(int err_code)
 {
 	if (err_code == 1)
 	{
@@ -35,6 +35,7 @@ static void	print_error(int err_code)
 		write(2, "Error: Number of philos must be greater than 0 and " \
 				"less than (2^31) - 1\n", 73);
 	}
+	return (0);
 }
 
 static int	is_number(char *str)
@@ -116,30 +117,15 @@ static int	valid_philos(char *philos_nptr)
 static int	valid_args(int params, char **args)
 {
 	if (params != 4 && params != 5)
-	{
-		print_error(1);
-		return (0);
-	}
+		return (print_error(1));
 	else if (has_non_numeric_param(args))
-	{
-		print_error(2);
-		return (0);
-	}
+		return (print_error(2));
 	else if (has_negative_number(args))
-	{
-		print_error(3);
-		return (0);
-	}
+		return (print_error(3));
 	else if (out_of_range(args))
-	{
-		print_error(4);
-		return (0);
-	}
+		return (print_error(4));
 	else if (!valid_philos(args[1]))
-	{
-		print_error(5);
-		return (0);
-	}
+		return (print_error(5));
 	return (1);
 }
 
