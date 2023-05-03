@@ -6,6 +6,7 @@ FILES		= philosophers \
 			  aux_funcs/ft_is_space \
 			  aux_funcs/ft_is_digit \
 			  aux_funcs/ft_is_sign \
+			  aux_funcs/print_error \
 			  aux_funcs/ft_atol
 
 SRCS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .c, $(FILES)))

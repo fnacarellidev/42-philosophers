@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/03 15:50:27 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:59:29 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -23,6 +23,7 @@ int			is_number(char *str);
 int			ft_is_space(char c);
 int			ft_is_digit(char c);
 int			ft_is_sign(char c);
+int			print_error(int err_code);
 long int	ft_atol(const char *nptr);
 
 #endif
