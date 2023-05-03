@@ -106,6 +106,20 @@ static int	has_non_numeric_param(char **args)
 	return (0);
 }
 
+static int	has_negative_number(char **args)
+{
+	int	i;
+
+	i = 1;
+	while (args[i])
+	{
+		if (*args[i] == '-')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 static int	valid_args(int params, char **args)
 {
 	if (params != 4 && params != 5)
@@ -118,6 +132,8 @@ static int	valid_args(int params, char **args)
 		print_error(2);
 		return (0);
 	}
+	else if (has_negative_number(args))
+		return (0);
 	return (1);
 }
 
