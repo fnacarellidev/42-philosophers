@@ -6,10 +6,45 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:08 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/04 16:50:50 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:49:16 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
+
+static int	count_argv(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+		i++;
+	return (i);
+}
+
+static void	init_philos_info(t_philo *philo, int philos_qty, char **argv)
+{
+	int		i;
+	int		args;
+	t_info	info;
+
+	i = 0;
+	args = count_argv(argv);
+	info.time_to_die = ft_atol(argv[2]);
+	info.time_to_eat = ft_atol(argv[3]);
+	info.time_to_sleep = ft_atol(argv[4]);
+	if (args == 6)
+		info.eat_many_times = ft_atol(argv[5]);
+	else
+		info.eat_many_times = -1;
+	while (i < philos_qty)
+	{
+		philo[i].info.time_to_die = info.time_to_die;
+		philo[i].info.time_to_eat = info.time_to_eat;
+		philo[i].info.time_to_sleep = info.time_to_sleep;
+		philo[i].info.eat_many_times = info.eat_many_times;
+		i++;
+	}
+}
 
 static void	init_philos_ids(t_philo *philo, int philos_qty)
 {
@@ -49,13 +84,13 @@ static void	init_philos_mutexes(t_philo *philo, int philos_qty)
 	}
 }
 
-void	init_philos(t_philo **philo_address, int philos_qty)
+void	init_philos(t_philo **philo_address, int philos_qty, char **argv)
 {
 	t_philo	*philo;
 
 	philo = malloc(sizeof(t_philo) * philos_qty);
 	init_philos_ids(philo, philos_qty);
 	init_philos_mutexes(philo, philos_qty);
+	init_philos_info(philo, philos_qty, argv);
 	*philo_address = philo;
 }
-

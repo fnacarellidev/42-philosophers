@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:55:31 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/04 18:35:04 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:52:10 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -64,7 +64,7 @@ int	main(int argc, char **argv)
 	if (!valid_args(argc - 1, argv))
 		return (1);
 	philos_qty = ft_atol(argv[1]);
-	init_philos(&philo, philos_qty);
+	init_philos(&philo, philos_qty, argv);
 	init_threads(philo, philos_qty);
 	die(philo, philos_qty);
 	return (0);
