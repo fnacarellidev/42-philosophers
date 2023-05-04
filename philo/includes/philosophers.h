@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/03 18:48:02 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:55:46 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -20,6 +20,7 @@ typedef struct s_philo
 	int				id;
 	pthread_mutex_t	fork;
 	pthread_mutex_t	*fork_left;
+	pthread_mutex_t	*mut_print;
 }	t_philo;
 
 typedef struct s_table

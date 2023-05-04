@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:55:31 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/03 19:46:28 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/04 13:07:32 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -21,13 +21,23 @@ static void	init_philos(t_table *table)
 	i = 0;
 	philos_qty = table->nbr_of_philos;
 	table->philo = malloc(sizeof(t_philo) * philos_qty);
+	table->philo[0].mut_print = malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(table->philo[0].mut_print, NULL);
 	while (i < philos_qty)
 	{
 		curr_philo = (table->philo) + i;
-		curr_philo->id = i;
-		left_idx = (i + philos_qty - 1) % philos_qty;
-		curr_philo->fork_left = &(table->philo[left_idx].fork);
+		curr_philo->id = i + 1;
 		pthread_mutex_init(&curr_philo->fork, NULL);
+		i++;
+	}
+	i = 0;
+	while (i < philos_qty)
+	{
+		curr_philo = (table->philo) + i;
+		if (i > 0)
+			curr_philo->mut_print = table->philo[0].mut_print;
+		left_idx = (i + philos_qty - 1) % philos_qty;
+		curr_philo->fork_left = &table->philo[left_idx].fork;
 		i++;
 	}
 }
