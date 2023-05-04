@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:55:31 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/04 13:07:32 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/04 13:46:25 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -42,10 +42,42 @@ static void	init_philos(t_table *table)
 	}
 }
 
+static void	*routine(void *arg)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
+	pthread_mutex_lock(philo->mut_print);
+	printf("Hello from thread %d\n", philo->id);
+	pthread_mutex_unlock(philo->mut_print);
+	return NULL;
+}
+
+static void	init_threads(t_table *table)
+{
+	int		i;
+	int		philos_qty;
+
+	i = 0;
+	philos_qty = table->nbr_of_philos;
+	while (i < philos_qty)
+	{
+		pthread_create(&table->philo[i].thread, NULL, &routine, (void *)(table->philo + i));
+		i++;
+	}
+	i = 0;
+	while (i < philos_qty)
+	{
+		pthread_join(table->philo[i].thread, NULL);
+		i++;
+	}
+}
+
 static void	init_table(t_table *table, char **argv)
 {
 	table->nbr_of_philos = ft_atol(argv[1]);
 	init_philos(table);
+	init_threads(table);
 }
 
 static void	die(t_table *table)

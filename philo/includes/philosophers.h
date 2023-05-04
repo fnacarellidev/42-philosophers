@@ -20,6 +20,7 @@ typedef struct s_philo
 	int				id;
 	pthread_mutex_t	fork;
 	pthread_mutex_t	*fork_left;
+	pthread_t		thread;
 	pthread_mutex_t	*mut_print;
 }	t_philo;
 
