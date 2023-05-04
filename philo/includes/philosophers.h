@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/04 15:48:36 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/04 16:40:35 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -31,5 +31,6 @@ int			is_number(char *str);
 int			print_error(int err_code);
 int			valid_args(int params, char **args);
 long int	ft_atol(const char *nptr);
+void		init_philos(t_philo **philo_address, int philos_qty);
 
 #endif
