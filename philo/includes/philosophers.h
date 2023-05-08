@@ -17,10 +17,10 @@
 
 typedef struct s_info
 {
-	useconds_t	time_to_die;
-	useconds_t	time_to_eat;
-	useconds_t	time_to_sleep;
-	int			eat_many_times;
+	unsigned int	time_to_die;
+	unsigned int	time_to_eat;
+	unsigned int	time_to_sleep;
+	int				eat_many_times;
 }	t_info;
 
 typedef struct s_philo
