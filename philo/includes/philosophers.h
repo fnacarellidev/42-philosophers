@@ -40,7 +40,7 @@ int			is_number(char *str);
 int			print_error(int err_code);
 int			valid_args(int params, char **args);
 long int	ft_atol(const char *nptr);
-void		init_philos(t_philo **philo_address, int philos_qty, char **argv);
+void		init_philos(t_philo **ptr_address, int philos_qty, char **argv);
 unsigned int	sec_to_milli(unsigned int seconds);
 unsigned int	milli_to_micro(unsigned int milliseconds);
 unsigned int	micro_to_milli(unsigned int microseconds);

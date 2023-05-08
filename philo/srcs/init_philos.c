@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:08 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/04 19:49:16 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/08 12:27:39 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -84,7 +84,7 @@ static void	init_philos_mutexes(t_philo *philo, int philos_qty)
 	}
 }
 
-void	init_philos(t_philo **philo_address, int philos_qty, char **argv)
+void	init_philos(t_philo **ptr_address, int philos_qty, char **argv)
 {
 	t_philo	*philo;
 
@@ -92,5 +92,5 @@ void	init_philos(t_philo **philo_address, int philos_qty, char **argv)
 	init_philos_ids(philo, philos_qty);
 	init_philos_mutexes(philo, philos_qty);
 	init_philos_info(philo, philos_qty, argv);
-	*philo_address = philo;
+	*ptr_address = philo;
 }
