@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 12:44:35 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/08 17:05:17 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -40,11 +40,15 @@ int				ft_is_digit(char c);
 int				is_number(char *str);
 int				print_error(int err_code);
 int				valid_args(int params, char **args);
-long int		ft_atol(const char *nptr);
 void			init_philos(t_philo **ptr_address, int philos_qty, char **argv);
+void			take_forks(t_philo *philo);
+void			eat(t_philo *philo);
+void			rest(t_philo *philo);
+void			think(t_philo *philo);
 unsigned int	sec_to_milli(unsigned int seconds);
 unsigned int	milli_to_micro(unsigned int milliseconds);
 unsigned int	micro_to_milli(unsigned int microseconds);
 unsigned int	get_ms_timestamp(void);
+long int		ft_atol(const char *nptr);
 
 #endif
