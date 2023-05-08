@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 17:54:50 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:57:53 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -28,9 +28,9 @@ typedef struct s_philo
 	t_info			info;
 	time_t			ms_init_timestamp;
 	time_t			last_meal;
+	pthread_t		thread;
 	pthread_mutex_t	fork;
 	pthread_mutex_t	*fork_left;
-	pthread_t		thread;
 	pthread_mutex_t	*g_mut;
 }	t_philo;
 
