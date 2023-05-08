@@ -6,14 +6,13 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 17:05:17 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/08 17:17:55 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
-# define PH_MAX_INT 2147483647
 # include "libs.h"
-# include "ft_errors.h"
+# include "ft_defines.h"
 
 typedef struct s_info
 {
