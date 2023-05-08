@@ -11,6 +11,16 @@
 /* ************************************************************************** */
 #include "../../includes/philosophers.h"
 
+unsigned int	get_ms_timestamp(void)
+{
+	struct timeval	tv;
+	unsigned int	ms_timestamp;
+
+	gettimeofday(&tv, NULL);
+	ms_timestamp = sec_to_milli(tv.tv_sec) + micro_to_milli(tv.tv_usec);
+	return (ms_timestamp);
+}
+
 unsigned int	micro_to_milli(unsigned int microseconds)
 {
 	return (microseconds / 1000);
