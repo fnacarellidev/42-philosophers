@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 17:17:55 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/08 17:40:24 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -24,13 +24,13 @@ typedef struct s_info
 
 typedef struct s_philo
 {
-	int					id;
-	t_info				info;
-	unsigned long int	ms_init_timestamp;
-	pthread_mutex_t		fork;
-	pthread_mutex_t		*fork_left;
-	pthread_t			thread;
-	pthread_mutex_t		*g_mut;
+	int				id;
+	t_info			info;
+	time_t			ms_init_timestamp;
+	pthread_mutex_t	fork;
+	pthread_mutex_t	*fork_left;
+	pthread_t		thread;
+	pthread_mutex_t	*g_mut;
 }	t_philo;
 
 int				ft_is_sign(char c);
@@ -44,10 +44,10 @@ void			take_forks(t_philo *philo);
 void			eat(t_philo *philo);
 void			rest(t_philo *philo);
 void			think(t_philo *philo);
-unsigned int	sec_to_milli(unsigned int seconds);
-unsigned int	milli_to_micro(unsigned int milliseconds);
-unsigned int	micro_to_milli(unsigned int microseconds);
-unsigned int	get_ms_timestamp(void);
+time_t		sec_to_milli(time_t seconds);
+time_t		milli_to_micro(time_t milliseconds);
+time_t		micro_to_milli(time_t microseconds);
+time_t		get_ms_timestamp(void);
 long int		ft_atol(const char *nptr);
 
 #endif

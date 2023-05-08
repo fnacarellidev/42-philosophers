@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:08 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 12:27:39 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/08 17:36:07 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -87,9 +87,9 @@ static void	init_philos_mutexes(t_philo *philo, int philos_qty)
 
 void	init_philos(t_philo **ptr_address, int philos_qty, char **argv)
 {
-	int				i;
-	t_philo			*philo;
-	unsigned int	ms_timestamp;
+	int		i;
+	t_philo	*philo;
+	time_t	ms_timestamp;
 
 	i = 0;
 	philo = malloc(sizeof(t_philo) * philos_qty);
