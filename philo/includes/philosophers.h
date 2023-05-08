@@ -34,6 +34,14 @@ typedef struct s_philo
 	pthread_mutex_t	*g_mut;
 }	t_philo;
 
+typedef struct s_philo_info
+{
+	int				philo_qty;
+	pthread_t		thread;
+	pthread_mutex_t	*g_mut;
+	t_philo			*philo;
+}	t_philo_info;
+
 int				ft_is_sign(char c);
 int				ft_is_space(char c);
 int				ft_is_digit(char c);
