@@ -6,12 +6,12 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 11:40:03 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 17:36:18 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/08 17:43:43 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philosophers.h"
 
-time_t get_ms_timestamp(void)
+time_t	get_ms_timestamp(void)
 {
 	struct timeval	tv;
 	time_t			ms_timestamp;
