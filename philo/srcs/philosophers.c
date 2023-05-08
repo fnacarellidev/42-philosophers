@@ -58,16 +58,22 @@ static void	*philos_watcher(void *info)
 
 static void	init_threads(t_philo *philo, int philos_qty)
 {
-	int		i;
-	t_philo	*curr_philo;
+	int				i;
+	t_philo			*curr_philo;
+	t_philo_info	philo_info;
 
 	i = 0;
+	philo_info.philo = philo;
+	philo_info.philo_qty = philos_qty;
 	while (i < philos_qty)
 	{
 		curr_philo = philo + i;
 		pthread_create(&curr_philo->thread, NULL, &routine, (void *)curr_philo);
 		i++;
 	}
+	philo_info.g_mut = philo[0].g_mut;
+	pthread_create(&philo_info.thread, NULL, &philos_watcher, (void *)&philo_info);
+	pthread_join(philo_info.thread, NULL);
 	i = 0;
 	while (i < philos_qty)
 	{
