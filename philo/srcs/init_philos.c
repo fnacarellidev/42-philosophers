@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:08 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 17:36:07 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:51:26 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -100,6 +100,7 @@ void	init_philos(t_philo **ptr_address, int philos_qty, char **argv)
 	while (i < philos_qty)
 	{
 		philo[i].ms_init_timestamp = ms_timestamp;
+		philo[i].last_meal = get_ms_timestamp();
 		i++;
 	}
 	*ptr_address = philo;
