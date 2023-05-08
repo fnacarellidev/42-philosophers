@@ -33,6 +33,9 @@ void	eat(t_philo *philo)
 	printf("%ld %d is eating\n", get_ms_timestamp() - philo->ms_init_timestamp, philo->id);
 	pthread_mutex_unlock(philo->g_mut);
 	usleep(milli_to_micro(philo->info.time_to_eat));
+	pthread_mutex_lock(philo->g_mut);
+	philo->last_meal = get_ms_timestamp();
+	pthread_mutex_unlock(philo->g_mut);
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(philo->fork_left);
 }
