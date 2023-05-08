@@ -11,6 +11,11 @@
 /* ************************************************************************** */
 #include "../../includes/philosophers.h"
 
+unsigned int	micro_to_milli(unsigned int microseconds)
+{
+	return (microseconds / 1000);
+}
+
 unsigned int	sec_to_milli(unsigned int seconds)
 {
 	return (seconds * 1000);
