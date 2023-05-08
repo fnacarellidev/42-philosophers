@@ -11,6 +11,18 @@
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
 
+static void	think(t_philo *philo)
+{
+	struct timeval	tv;
+	time_t			curr_ms;
+
+	pthread_mutex_lock(philo->g_mut);
+	gettimeofday(&tv, NULL);
+	curr_ms = sec_to_milli(tv.tv_sec) + micro_to_milli(tv.tv_usec);
+	printf("%ld %d is thinking\n", curr_ms - philo->ms_init_timestamp, philo->id);
+	pthread_mutex_unlock(philo->g_mut);
+}
+
 static void	rest(t_philo *philo)
 {
 	struct timeval	tv;
@@ -70,6 +82,7 @@ static void	*routine(void *ptr)
 		take_forks(philo);
 		eat(philo);
 		rest(philo);
+		think(philo);
 	}
 	return (NULL);
 }
