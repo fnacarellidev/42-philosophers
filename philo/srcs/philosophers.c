@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:55:31 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 17:02:21 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/08 17:23:22 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -22,6 +22,9 @@ static void	*routine(void *ptr)
 		eat(philo);
 		rest(philo);
 		think(philo);
+		philo->info.eat_many_times--;
+		if (philo->info.eat_many_times == 0)
+			break ;
 	}
 	return (NULL);
 }
