@@ -25,12 +25,13 @@ typedef struct s_info
 
 typedef struct s_philo
 {
-	int				id;
-	t_info			info;
-	pthread_mutex_t	fork;
-	pthread_mutex_t	*fork_left;
-	pthread_t		thread;
-	pthread_mutex_t	*g_mut;
+	int					id;
+	t_info				info;
+	unsigned long int	ms_init_timestamp;
+	pthread_mutex_t		fork;
+	pthread_mutex_t		*fork_left;
+	pthread_t			thread;
+	pthread_mutex_t		*g_mut;
 }	t_philo;
 
 int				ft_is_sign(char c);

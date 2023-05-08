@@ -78,6 +78,7 @@ static void	init_philos_mutexes(t_philo *philo, int philos_qty)
 	while (i < philos_qty)
 	{
 		curr_philo = philo + i;
+		curr_philo->g_mut = philo[0].g_mut;
 		left_idx = (i + philos_qty - 1) % philos_qty;
 		curr_philo->fork_left = &philo[left_idx].fork;
 		i++;
@@ -86,11 +87,20 @@ static void	init_philos_mutexes(t_philo *philo, int philos_qty)
 
 void	init_philos(t_philo **ptr_address, int philos_qty, char **argv)
 {
-	t_philo	*philo;
+	int				i;
+	t_philo			*philo;
+	unsigned int	ms_timestamp;
 
+	i = 0;
 	philo = malloc(sizeof(t_philo) * philos_qty);
 	init_philos_ids(philo, philos_qty);
 	init_philos_mutexes(philo, philos_qty);
 	init_philos_info(philo, philos_qty, argv);
+	ms_timestamp = get_ms_timestamp();
+	while (i < philos_qty)
+	{
+		philo[i].ms_init_timestamp = ms_timestamp;
+		i++;
+	}
 	*ptr_address = philo;
 }
