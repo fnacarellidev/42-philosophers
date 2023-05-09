@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:50:42 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/09 16:50:57 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:58:25 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -31,6 +31,13 @@ static void	*simulation(void *ptr)
 	return (NULL);
 }
 
+static void	init_info(t_philo_info *philo_info, t_philo *philo, int philos_qty)
+{
+	philo_info->philo = philo;
+	philo_info->philo_qty = philos_qty;
+	philo_info->g_mut = philo[0].g_mut;
+}
+
 void	solve_n_philos(t_philo *philo, int philos_qty)
 {
 	int				i;
@@ -38,15 +45,13 @@ void	solve_n_philos(t_philo *philo, int philos_qty)
 	t_philo_info	philo_info;
 
 	i = 0;
-	philo_info.philo = philo;
-	philo_info.philo_qty = philos_qty;
 	while (i < philos_qty)
 	{
 		curr_philo = philo + i;
 		pthread_create(&curr_philo->thread, NULL, &simulation, (void *)curr_philo);
 		i++;
 	}
-	philo_info.g_mut = philo[0].g_mut;
+	init_info(&philo_info, philo, philos_qty);
 	pthread_create(&philo_info.thread, NULL, &philos_watcher, (void *)&philo_info);
 	i = 0;
 	while (i < philos_qty)
@@ -57,4 +62,3 @@ void	solve_n_philos(t_philo *philo, int philos_qty)
 	}
 	pthread_join(philo_info.thread, NULL);
 }
-
