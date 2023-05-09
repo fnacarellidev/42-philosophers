@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:08 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 18:51:26 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:51:53 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -38,6 +38,7 @@ static void	init_philos_info(t_philo *philo, int philos_qty, char **argv)
 		info.eat_many_times = -1;
 	while (i < philos_qty)
 	{
+		philo[i].stop_simulation = 0;
 		philo[i].info.time_to_die = info.time_to_die;
 		philo[i].info.time_to_eat = info.time_to_eat;
 		philo[i].info.time_to_sleep = info.time_to_sleep;

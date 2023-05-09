@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/09 14:22:26 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:50:43 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -25,6 +25,7 @@ typedef struct s_info
 typedef struct s_philo
 {
 	int				id;
+	int				stop_simulation;
 	t_info			info;
 	time_t			ms_init_timestamp;
 	time_t			last_meal;
