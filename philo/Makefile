@@ -6,6 +6,7 @@ FILES		= philosophers \
 			  valid_args \
 			  philo_actions \
 			  watcher \
+			  solve \
 			  aux_funcs/is_number \
 			  aux_funcs/ft_is_space \
 			  aux_funcs/ft_is_digit \
