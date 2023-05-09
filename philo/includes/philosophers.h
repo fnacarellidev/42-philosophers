@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 18:57:53 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:22:26 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -48,6 +48,7 @@ int				ft_is_digit(char c);
 int				is_number(char *str);
 int				print_error(int err_code);
 int				valid_args(int params, char **args);
+int				ft_strcmp(const char *s1, const char *s2);
 void			init_philos(t_philo **ptr_address, int philos_qty, char **argv);
 void			take_forks(t_philo *philo);
 void			eat(t_philo *philo);
