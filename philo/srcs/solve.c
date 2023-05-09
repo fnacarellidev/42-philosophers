@@ -6,10 +6,34 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:50:42 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/09 16:58:25 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/09 17:37:42 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
+
+static void	*single_philo(void *ptr)
+{
+	time_t	curr_ms;
+	time_t	init_ms;
+	t_philo	*philo;
+
+	philo = (t_philo *)ptr;
+	init_ms = philo->ms_init_timestamp;
+	curr_ms = get_ms_timestamp();
+	pthread_mutex_lock(&philo->fork);
+	printf("%ld\t1 has taken a fork\n", curr_ms - init_ms);
+	usleep(milli_to_micro(philo->info.time_to_die));
+	curr_ms = get_ms_timestamp();
+	printf("%ld\t1 died\n", curr_ms - init_ms);
+	pthread_mutex_unlock(&philo->fork);
+	return (NULL);
+}
+
+void	solve_single_philo(t_philo *philo)
+{
+	pthread_create(&philo[0].thread, NULL, &single_philo, (void *)&philo[0]);
+	pthread_join(philo[0].thread, NULL);
+}
 
 static void	*simulation(void *ptr)
 {

@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:55:31 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/09 16:52:08 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/09 17:37:07 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -22,7 +22,10 @@ int	main(int argc, char **argv)
 		return (1);
 	philos_qty = ft_atol(argv[1]);
 	init_philos(&philo, philos_qty, argv);
-	solve_n_philos(philo, philos_qty);
+	if (philos_qty == 1)
+		solve_single_philo(philo);
+	else
+		solve_n_philos(philo, philos_qty);
 	die(philo, philos_qty);
 	return (0);
 }
