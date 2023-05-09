@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:55:31 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 18:54:58 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:36:21 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -20,13 +20,29 @@ static void	*routine(void *ptr)
 	{
 		take_forks(philo);
 		eat(philo);
-		rest(philo);
-		think(philo);
-		philo->info.eat_many_times--;
-		if (philo->info.eat_many_times == 0)
-			break ;
+		if (!philo->stop_simulation)
+		{
+			rest(philo);
+			think(philo);
+		}
+		if (philo->info.eat_many_times == 0 || philo->stop_simulation)
+			return (NULL) ;
 	}
 	return (NULL);
+}
+
+static void	stop_simulation(t_philo_info *philo_info)
+{
+	int	i;
+	int	philo_qty;
+
+	i = 0;
+	philo_qty = philo_info->philo_qty;
+	while (i < philo_qty)
+	{
+		philo_info->philo[i].stop_simulation = 1;
+		i++;
+	}
 }
 
 static void	*philos_watcher(void *info)
@@ -44,13 +60,16 @@ static void	*philos_watcher(void *info)
 		{
 			curr_philo = philo_info->philo + i;
 			time_to_die = curr_philo->info.time_to_die;
-			if (get_ms_timestamp() - curr_philo->last_meal >= time_to_die)
+			if (get_ms_timestamp() - curr_philo->last_meal >= time_to_die && curr_philo->info.eat_many_times != 0)
 			{
 				pthread_mutex_lock(philo_info->g_mut);
 				printf("%ld %d died\n", get_ms_timestamp() - curr_philo->ms_init_timestamp, curr_philo->id);
+				stop_simulation(philo_info);
 				pthread_mutex_unlock(philo_info->g_mut);
-				exit(1);
+				return (NULL);
 			}
+			else if (curr_philo->info.eat_many_times == 0)
+				return (NULL);
 		}
 	}
 	return (NULL);
@@ -73,7 +92,6 @@ static void	init_threads(t_philo *philo, int philos_qty)
 	}
 	philo_info.g_mut = philo[0].g_mut;
 	pthread_create(&philo_info.thread, NULL, &philos_watcher, (void *)&philo_info);
-	pthread_join(philo_info.thread, NULL);
 	i = 0;
 	while (i < philos_qty)
 	{
@@ -81,6 +99,7 @@ static void	init_threads(t_philo *philo, int philos_qty)
 		pthread_join(curr_philo->thread, NULL);
 		i++;
 	}
+	pthread_join(philo_info.thread, NULL);
 }
 
 static void	die(t_philo *philo, int philos_qty)
