@@ -20,5 +20,6 @@ int			ft_is_sign(char c);
 int			ft_is_space(char c);
 int			is_number(char *str);
 int			print_error(int err_code);
+int			valid_args(int params, char **args);
 
 #endif
