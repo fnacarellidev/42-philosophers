@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers_bonus.h                               :+:      :+:    :+:   */
+/*   ft_is_digit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 11:02:11 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/10 20:14:20 by fnacarel         ###   ########.fr       */
+/*   Created: 2023/05/10 20:06:32 by fnacarel          #+#    #+#             */
+/*   Updated: 2023/05/10 20:06:37 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PHILOSOPHERS_BONUS_H
-# define PHILOSOPHERS_BONUS_H
-# include "libs_bonus.h"
-# include "ft_defines.h"
+#include "../../includes/philosophers_bonus.h"
 
-int			ft_is_digit(char c);
-
-#endif
+int	ft_is_digit(char c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
+}

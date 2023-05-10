@@ -1,7 +1,8 @@
 NAME		= philo_bonus
 SRCS_PATH	= ./srcs
 
-FILES		= philosophers_bonus
+FILES		= philosophers_bonus \
+			  aux_funcs/ft_is_digit
 
 SRCS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .o, $(FILES)))
