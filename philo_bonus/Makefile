@@ -6,7 +6,8 @@ FILES		= philosophers_bonus \
 			  aux_funcs/ft_is_digit \
 			  aux_funcs/ft_is_sign \
 			  aux_funcs/ft_is_space \
-			  aux_funcs/is_number
+			  aux_funcs/is_number \
+			  aux_funcs/print_error
 
 SRCS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .o, $(FILES)))
