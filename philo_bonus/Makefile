@@ -2,6 +2,7 @@ NAME		= philo_bonus
 SRCS_PATH	= ./srcs
 
 FILES		= philosophers_bonus \
+			  aux_funcs/ft_atol \
 			  aux_funcs/ft_is_digit \
 			  aux_funcs/ft_is_sign \
 			  aux_funcs/ft_is_space \

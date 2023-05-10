@@ -14,6 +14,7 @@
 # include "libs_bonus.h"
 # include "ft_defines.h"
 
+long int	ft_atol(const char *nptr);
 int			ft_is_digit(char c);
 int			ft_is_sign(char c);
 int			ft_is_space(char c);
