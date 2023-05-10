@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/09 17:36:42 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/09 18:27:52 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -55,7 +55,7 @@ void			take_forks(t_philo *philo);
 void			eat(t_philo *philo);
 void			rest(t_philo *philo);
 void			think(t_philo *philo);
-void			*philos_watcher(void *info);
+void			*watcher(void *info);
 void			solve_single_philo(t_philo *philo);
 void			solve_n_philos(t_philo *philo, int philos_qty);
 time_t			sec_to_milli(time_t seconds);

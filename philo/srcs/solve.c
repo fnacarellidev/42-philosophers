@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:50:42 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/09 17:37:42 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/09 18:27:34 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -37,6 +37,8 @@ void	solve_single_philo(t_philo *philo)
 
 static void	*simulation(void *ptr)
 {
+	int		stop_simulation;
+	int		number_of_meals;
 	t_philo	*philo;
 
 	philo = (t_philo *)ptr;
@@ -44,13 +46,17 @@ static void	*simulation(void *ptr)
 	{
 		take_forks(philo);
 		eat(philo);
-		if (!philo->stop_simulation)
+		pthread_mutex_lock(philo->g_mut);
+		stop_simulation = philo->stop_simulation;
+		number_of_meals = philo->info.eat_many_times;
+		pthread_mutex_unlock(philo->g_mut);
+		if (!stop_simulation)
 		{
 			rest(philo);
 			think(philo);
 		}
-		if (philo->info.eat_many_times == 0 || philo->stop_simulation)
-			return (NULL) ;
+		if (number_of_meals == 0 || stop_simulation)
+			return (NULL);
 	}
 	return (NULL);
 }
@@ -72,11 +78,11 @@ void	solve_n_philos(t_philo *philo, int philos_qty)
 	while (i < philos_qty)
 	{
 		curr_philo = philo + i;
-		pthread_create(&curr_philo->thread, NULL, &simulation, (void *)curr_philo);
+		pthread_create(&curr_philo->thread, 0, &simulation, (void *)curr_philo);
 		i++;
 	}
 	init_info(&philo_info, philo, philos_qty);
-	pthread_create(&philo_info.thread, NULL, &philos_watcher, (void *)&philo_info);
+	pthread_create(&philo_info.thread, NULL, &watcher, (void *)&philo_info);
 	i = 0;
 	while (i < philos_qty)
 	{
