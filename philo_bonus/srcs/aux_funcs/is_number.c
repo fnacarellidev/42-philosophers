@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers_bonus.h                               :+:      :+:    :+:   */
+/*   is_number.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 11:02:11 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/10 20:14:20 by fnacarel         ###   ########.fr       */
+/*   Created: 2023/05/10 20:12:07 by fnacarel          #+#    #+#             */
+/*   Updated: 2023/05/10 20:12:13 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PHILOSOPHERS_BONUS_H
-# define PHILOSOPHERS_BONUS_H
-# include "libs_bonus.h"
-# include "ft_defines.h"
+#include "../../includes/philosophers_bonus.h"
 
-int			ft_is_digit(char c);
-int			ft_is_sign(char c);
-int			ft_is_space(char c);
-int			is_number(char *str);
+int	is_number(char *str)
+{
+	int	i;
 
-#endif
+	if (!str)
+		return (0);
+	i = 0;
+	while (ft_is_space(str[i]))
+		i++;
+	if (ft_is_sign(str[i]))
+		i++;
+	if (!ft_is_digit(str[i]))
+		return (0);
+	while (ft_is_digit(str[i]))
+		i++;
+	while (ft_is_space(str[i]))
+		i++;
+	if (str[i])
+		return (0);
+	return (1);
+}
