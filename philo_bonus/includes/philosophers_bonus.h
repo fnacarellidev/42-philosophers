@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:02:11 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/10 20:14:20 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:23:33 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_BONUS_H
@@ -21,5 +21,9 @@ int			ft_is_space(char c);
 int			is_number(char *str);
 int			print_error(int err_code);
 int			valid_args(int params, char **args);
+time_t		get_ms_timestamp(void);
+time_t		micro_to_milli(time_t microseconds);
+time_t		sec_to_milli(time_t seconds);
+time_t		milli_to_micro(time_t milliseconds);
 
 #endif
