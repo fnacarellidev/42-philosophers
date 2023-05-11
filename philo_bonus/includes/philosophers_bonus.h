@@ -32,7 +32,7 @@ typedef struct s_philo
 typedef struct s_data
 {
 	time_t	ms_init;
-	size_t	*pid;
+	pid_t	*pid;
 	size_t	curr_philo;
 	t_philo	*philos;
 }	t_data;
