@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:14:32 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/11 18:40:48 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/11 20:18:00 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -40,6 +40,16 @@ static void	init_philos(t_data *data, size_t philos_qty, char **argv)
 	}
 }
 
+static void	child_proc(t_data *data)
+{
+	size_t	i;
+
+	i = data->curr_philo;
+	printf("Hello from proc %ld\n", data->philos[i].id - 1);
+	die(data);
+	exit(1);
+}
+
 void	init_data(t_data *data, size_t philos_qty, char **argv)
 {
 	size_t	i;
@@ -47,10 +57,14 @@ void	init_data(t_data *data, size_t philos_qty, char **argv)
 	i = 0;
 	data->ms_init = get_ms_timestamp();
 	data->philos = malloc(sizeof(t_philo) * philos_qty);
+	data->pid = malloc(sizeof(pid_t) * philos_qty);
 	init_philos(data, philos_qty, argv);
 	while (i < philos_qty)
 	{
 		data->curr_philo = i;
+		data->pid[i] = fork();
+		if (data->pid[i] == 0)
+			child_proc(data);
 		i++;
 	}
 }
@@ -73,6 +87,7 @@ int	main(int argc, char **argv)
 
 static void	die(t_data *data)
 {
+	free(data->pid);
 	free(data->philos);
 	free(data);
 }
