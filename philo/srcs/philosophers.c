@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:55:31 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/09 17:37:07 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:49:39 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -40,5 +40,6 @@ static void	die(t_philo *philo, int philos_qty)
 		pthread_mutex_destroy(&philo[i].fork);
 		i++;
 	}
+	free(philo->g_mut);
 	free(philo);
 }
