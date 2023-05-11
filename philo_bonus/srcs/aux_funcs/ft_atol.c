@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:07:12 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/10 20:07:21 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:26:57 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philosophers_bonus.h"
@@ -37,4 +37,3 @@ long int	ft_atol(const char *nptr)
 	}
 	return (res);
 }
-
