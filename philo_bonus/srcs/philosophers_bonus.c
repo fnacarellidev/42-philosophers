@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:14:32 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/11 18:26:31 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:38:26 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -55,6 +55,7 @@ void	init_data(t_data *data, size_t philos_qty, char **argv)
 
 static void	die(t_data *data)
 {
+	free(data->philos);
 	free(data);
 }
 
