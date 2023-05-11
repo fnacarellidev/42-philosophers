@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:02:11 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/11 18:27:23 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/11 20:16:26 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_BONUS_H
@@ -25,7 +25,6 @@ typedef struct s_timer
 typedef struct s_philo
 {
 	size_t	id;
-	pid_t	pid;
 	int		meals;
 	t_timer	timers;
 }	t_philo;
