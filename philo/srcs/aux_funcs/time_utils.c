@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 11:40:03 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/08 17:43:43 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/12 14:20:31 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philosophers.h"
@@ -17,7 +17,7 @@ time_t	get_ms_timestamp(void)
 	time_t			ms_timestamp;
 
 	gettimeofday(&tv, NULL);
-	ms_timestamp = sec_to_milli(tv.tv_sec) + micro_to_milli(tv.tv_usec);
+	ms_timestamp = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	return (ms_timestamp);
 }
 

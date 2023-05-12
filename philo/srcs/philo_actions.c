@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:01:40 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/09 21:31:25 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/12 14:19:09 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -42,7 +42,7 @@ void	think(t_philo *philo)
 void	rest(t_philo *philo)
 {
 	mut_print("sleeping", philo);
-	usleep(milli_to_micro(philo->info.time_to_sleep));
+	usleep(1000 * philo->info.time_to_sleep);
 }
 
 void	eat(t_philo *philo)
@@ -55,7 +55,7 @@ void	eat(t_philo *philo)
 	if (!philo->stop_simulation)
 	{
 		mut_print("eating", philo);
-		usleep(milli_to_micro(philo->info.time_to_eat));
+		usleep(1000 * philo->info.time_to_eat);
 		pthread_mutex_lock(philo->g_mut);
 		philo->info.eat_many_times--;
 		philo->last_meal = get_ms_timestamp();

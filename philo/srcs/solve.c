@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:50:42 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/09 18:27:34 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/12 14:18:31 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
@@ -22,7 +22,7 @@ static void	*single_philo(void *ptr)
 	curr_ms = get_ms_timestamp();
 	pthread_mutex_lock(&philo->fork);
 	printf("%ld\t1 has taken a fork\n", curr_ms - init_ms);
-	usleep(milli_to_micro(philo->info.time_to_die));
+	usleep(1000 * philo->info.time_to_die);
 	curr_ms = get_ms_timestamp();
 	printf("%ld\t1 died\n", curr_ms - init_ms);
 	pthread_mutex_unlock(&philo->fork);
