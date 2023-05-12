@@ -6,12 +6,32 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:14:32 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/11 20:18:00 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:30:28 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
 
 static void	die(t_data *data);
+
+static void	init_timers(t_data *data, size_t philos_qty, char **argv)
+{
+	size_t	i;
+	time_t	time_to_die;
+	time_t	time_to_eat;
+	time_t	time_to_sleep;
+
+	i = 0;
+	time_to_die = ft_atol(argv[2]);
+	time_to_eat = ft_atol(argv[3]);
+	time_to_sleep = ft_atol(argv[4]);
+	while (i < philos_qty)
+	{
+		data->philos[i].timers.time_to_die = time_to_die;
+		data->philos[i].timers.time_to_eat = time_to_eat;
+		data->philos[i].timers.time_to_sleep = time_to_sleep;
+		i++;
+	}
+}
 
 static void	init_philos(t_data *data, size_t philos_qty, char **argv)
 {
@@ -19,12 +39,10 @@ static void	init_philos(t_data *data, size_t philos_qty, char **argv)
 	time_t	init_meal;
 
 	i = 0;
+	init_timers(data, philos_qty, argv);
 	while (i < philos_qty)
 	{
 		data->philos[i].id = i + 1;
-		data->philos[i].timers.time_to_die = ft_atol(argv[2]);
-		data->philos[i].timers.time_to_eat = ft_atol(argv[3]);
-		data->philos[i].timers.time_to_sleep = ft_atol(argv[4]);
 		if (argv[5])
 			data->philos[i].meals = ft_atol(argv[5]);
 		else
