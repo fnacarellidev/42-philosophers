@@ -6,21 +6,24 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:14:32 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/12 16:35:52 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:23:19 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
+#include <sys/time.h>
 
 static void	die(t_data *data);
 
 static void	init_timers(t_data *data, size_t philos_qty, char **argv)
 {
-	size_t	i;
-	time_t	time_to_die;
-	time_t	time_to_eat;
-	time_t	time_to_sleep;
+	size_t			i;
+	time_t			time_to_die;
+	time_t			time_to_eat;
+	time_t			time_to_sleep;
+	struct timeval	tv;
 
 	i = 0;
+	gettimeofday(&tv, NULL);
 	time_to_die = ft_atol(argv[2]);
 	time_to_eat = ft_atol(argv[3]);
 	time_to_sleep = ft_atol(argv[4]);
@@ -29,15 +32,14 @@ static void	init_timers(t_data *data, size_t philos_qty, char **argv)
 		data->philos[i].timers.time_to_die = time_to_die;
 		data->philos[i].timers.time_to_eat = time_to_eat;
 		data->philos[i].timers.time_to_sleep = time_to_sleep;
+		data->philos[i].timers.last_meal = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 		i++;
 	}
 }
 
 static void	init_philos(t_data *data, size_t philos_qty, char **argv)
 {
-	size_t			i;
-	time_t			init_meal;
-	struct timeval	tv;
+	size_t	i;
 
 	i = 0;
 	init_timers(data, philos_qty, argv);
@@ -48,14 +50,6 @@ static void	init_philos(t_data *data, size_t philos_qty, char **argv)
 			data->philos[i].meals = ft_atol(argv[5]);
 		else
 			data->philos[i].meals = -1;
-		i++;
-	}
-	i = 0;
-	gettimeofday(&tv, NULL);
-	init_meal = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
-	while (i < philos_qty)
-	{
-		data->philos[i].timers.last_meal = init_meal;
 		i++;
 	}
 }
