@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:14:32 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/12 16:30:28 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:34:10 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -35,8 +35,9 @@ static void	init_timers(t_data *data, size_t philos_qty, char **argv)
 
 static void	init_philos(t_data *data, size_t philos_qty, char **argv)
 {
-	size_t	i;
-	time_t	init_meal;
+	size_t			i;
+	time_t			init_meal;
+	struct timeval	tv;
 
 	i = 0;
 	init_timers(data, philos_qty, argv);
@@ -49,8 +50,9 @@ static void	init_philos(t_data *data, size_t philos_qty, char **argv)
 			data->philos[i].meals = -1;
 		i++;
 	}
-	init_meal = get_ms_timestamp();
 	i = 0;
+	gettimeofday(&tv, NULL);
+	init_meal = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	while (i < philos_qty)
 	{
 		data->philos[i].timers.last_meal = init_meal;
@@ -70,10 +72,12 @@ static void	child_proc(t_data *data)
 
 void	init_data(t_data *data, size_t philos_qty, char **argv)
 {
-	size_t	i;
+	size_t			i;
+	struct timeval	tv;
 
 	i = 0;
-	data->ms_init = get_ms_timestamp();
+	gettimeofday(&tv, NULL);
+	data->ms_init = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	data->philos = malloc(sizeof(t_philo) * philos_qty);
 	data->pid = malloc(sizeof(pid_t) * philos_qty);
 	init_philos(data, philos_qty, argv);
