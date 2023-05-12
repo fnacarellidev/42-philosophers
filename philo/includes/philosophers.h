@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:53:04 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/09 18:27:52 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:26:33 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -58,9 +58,6 @@ void			think(t_philo *philo);
 void			*watcher(void *info);
 void			solve_single_philo(t_philo *philo);
 void			solve_n_philos(t_philo *philo, int philos_qty);
-time_t			sec_to_milli(time_t seconds);
-time_t			milli_to_micro(time_t milliseconds);
-time_t			micro_to_milli(time_t microseconds);
 time_t			get_ms_timestamp(void);
 long int		ft_atol(const char *nptr);
 
