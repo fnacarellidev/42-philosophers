@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:02:11 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/11 20:16:26 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:29:50 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_BONUS_H
@@ -31,10 +31,10 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	time_t	ms_init;
 	pid_t	*pid;
-	size_t	curr_philo;
 	t_philo	*philos;
+	time_t	ms_init;
+	size_t	curr_philo;
 }	t_data;
 
 long int	ft_atol(const char *nptr);
@@ -48,4 +48,6 @@ time_t		get_ms_timestamp(void);
 time_t		micro_to_milli(time_t microseconds);
 time_t		sec_to_milli(time_t seconds);
 time_t		milli_to_micro(time_t milliseconds);
+void		init_data(t_data *data, size_t philos_qty, char **argv);
+void		die(t_data *data);
 #endif
