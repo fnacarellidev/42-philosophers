@@ -78,6 +78,7 @@ void	*watcher(void *info)
 	time_to_die = philo_info->philo[0].info.time_to_die;
 	while (1)
 	{
+		usleep(200);
 		if (has_dead_philo(philo_info, time_to_die))
 			return (NULL);
 	}
