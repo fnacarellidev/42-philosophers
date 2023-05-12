@@ -6,30 +6,34 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:01:40 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/12 14:19:09 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:17:46 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers.h"
 
 void	mut_print(char *suffix, t_philo *philo)
 {
-	int		id;
-	int		stop_simulation;
-	time_t	init_timestamp;
+	struct timeval	tv;
+	int				id;
+	int				stop_simulation;
+	time_t			init_timestamp;
+	time_t			curr_ms;
 
+	gettimeofday(&tv, NULL);
+	curr_ms = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	id = philo->id;
 	init_timestamp = philo->ms_init_timestamp;
 	pthread_mutex_lock(philo->g_mut);
 	stop_simulation = philo->stop_simulation;
 	if (ft_strcmp("thinking", suffix) == 0 && !stop_simulation)
-		printf("%ld\t%d is thinking\n", get_ms_timestamp() - init_timestamp, id);
+		printf("%ld\t%d is thinking\n", curr_ms - init_timestamp, id);
 	else if (ft_strcmp("sleeping", suffix) == 0 && !stop_simulation)
-		printf("%ld\t%d is sleeping\n", get_ms_timestamp() - init_timestamp, id);
+		printf("%ld\t%d is sleeping\n", curr_ms - init_timestamp, id);
 	else if (ft_strcmp("eating", suffix) == 0 && !stop_simulation)
-		printf("%ld\t%d is eating\n", get_ms_timestamp() - init_timestamp, id);
+		printf("%ld\t%d is eating\n", curr_ms - init_timestamp, id);
 	else if (ft_strcmp("fork", suffix) == 0 && !stop_simulation)
 		printf("%ld\t%d has taken a fork\n", \
-				get_ms_timestamp() - init_timestamp, id);
+				curr_ms - init_timestamp, id);
 	pthread_mutex_unlock(philo->g_mut);
 }
 
@@ -47,7 +51,9 @@ void	rest(t_philo *philo)
 
 void	eat(t_philo *philo)
 {
-	int	stop_simulation;
+	struct timeval	tv;
+	time_t			curr_ms;
+	int				stop_simulation;
 
 	pthread_mutex_lock(philo->g_mut);
 	stop_simulation = philo->stop_simulation;
@@ -58,7 +64,9 @@ void	eat(t_philo *philo)
 		usleep(1000 * philo->info.time_to_eat);
 		pthread_mutex_lock(philo->g_mut);
 		philo->info.eat_many_times--;
-		philo->last_meal = get_ms_timestamp();
+		gettimeofday(&tv, NULL);
+		curr_ms = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+		philo->last_meal = curr_ms;
 		pthread_mutex_unlock(philo->g_mut);
 	}
 	pthread_mutex_unlock(&philo->fork);
