@@ -1,39 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_is_digit_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 20:07:12 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/11 18:26:57 by fnacarel         ###   ########.fr       */
+/*   Created: 2023/05/10 20:06:32 by fnacarel          #+#    #+#             */
+/*   Updated: 2023/05/10 20:06:37 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philosophers_bonus.h"
 
-long int	ft_atol(const char *nptr)
+int	ft_is_digit(char c)
 {
-	int			i;
-	long int	res;
-	int			sign;
-
-	sign = 1;
-	i = 0;
-	res = 0;
-	while (ft_is_space(*(nptr + i)))
-		i++;
-	if (!ft_is_digit(*(nptr + i)) && !ft_is_sign(*(nptr + i)))
-		return (res);
-	if (ft_is_sign(*(nptr + i)))
-	{
-		if (*(nptr + i) == '-')
-			sign *= -1;
-		i++;
-	}
-	while (ft_is_digit(*(nptr + i)))
-	{
-		res = ((res * 10) + (*(nptr + i) - '0') * sign);
-		i++;
-	}
-	return (res);
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

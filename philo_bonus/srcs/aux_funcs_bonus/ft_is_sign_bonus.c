@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_space.c                                      :+:      :+:    :+:   */
+/*   ft_is_sign_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 20:06:06 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/10 20:06:14 by fnacarel         ###   ########.fr       */
+/*   Created: 2023/05/10 20:06:57 by fnacarel          #+#    #+#             */
+/*   Updated: 2023/05/10 20:07:02 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philosophers_bonus.h"
 
-int	ft_is_space(char c)
+int	ft_is_sign(char c)
 {
-	if (c == 32 || (c >= 9 && c <= 13))
+	if (c == '-' || c == '+')
 		return (1);
 	return (0);
 }

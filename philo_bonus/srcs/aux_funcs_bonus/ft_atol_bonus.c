@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   ft_atol_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 12:22:19 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/11 12:22:41 by fnacarel         ###   ########.fr       */
+/*   Created: 2023/05/10 20:07:12 by fnacarel          #+#    #+#             */
+/*   Updated: 2023/05/11 18:26:57 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philosophers_bonus.h"
 
-time_t	get_ms_timestamp(void)
+long int	ft_atol(const char *nptr)
 {
-	struct timeval	tv;
-	time_t			ms_timestamp;
+	int			i;
+	long int	res;
+	int			sign;
 
-	gettimeofday(&tv, NULL);
-	ms_timestamp = sec_to_milli(tv.tv_sec) + micro_to_milli(tv.tv_usec);
-	return (ms_timestamp);
-}
-
-time_t	micro_to_milli(time_t microseconds)
-{
-	return (microseconds / 1000);
-}
-
-time_t	sec_to_milli(time_t seconds)
-{
-	return (seconds * 1000);
-}
-
-time_t	milli_to_micro(time_t milliseconds)
-{
-	return (milliseconds * 1000);
+	sign = 1;
+	i = 0;
+	res = 0;
+	while (ft_is_space(*(nptr + i)))
+		i++;
+	if (!ft_is_digit(*(nptr + i)) && !ft_is_sign(*(nptr + i)))
+		return (res);
+	if (ft_is_sign(*(nptr + i)))
+	{
+		if (*(nptr + i) == '-')
+			sign *= -1;
+		i++;
+	}
+	while (ft_is_digit(*(nptr + i)))
+	{
+		res = ((res * 10) + (*(nptr + i) - '0') * sign);
+		i++;
+	}
+	return (res);
 }

@@ -6,13 +6,13 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:02:11 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/12 19:01:18 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/13 13:35:40 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_BONUS_H
 # define PHILOSOPHERS_BONUS_H
 # include "libs_bonus.h"
-# include "ft_defines.h"
+# include "ft_defines_bonus.h"
 
 typedef struct s_timer
 {
