@@ -6,10 +6,11 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:24:50 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/12 17:25:45 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/12 19:55:02 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
+#include <semaphore.h>
 
 static void	init_timers(t_data *data, size_t philos_qty, char **argv)
 {
@@ -53,10 +54,20 @@ static void	init_philos(t_data *data, size_t philos_qty, char **argv)
 
 static void	child_proc(t_data *data)
 {
+	t_philo	philo;
 	size_t	i;
 
 	i = data->curr_philo;
-	printf("Hello from proc %ld\n", data->philos[i].id - 1);
+	philo = data->philos[i];
+	sem_wait(data->forks);
+	printf("Philo %ld grabbed a fork!\n", philo.id);
+	sem_wait(data->forks);
+	printf("Philo %ld grabbed a fork!\n", philo.id);
+	printf("Philo %ld started eating!\n", philo.id);
+	sleep(2);
+	printf("Philo %ld done eating!\n", philo.id);
+	sem_post(data->forks);
+	sem_post(data->forks);
 	die(data);
 	exit(1);
 }
@@ -74,6 +85,7 @@ void	init_data(t_data *data, size_t philos_qty, char **argv)
 	if (data->philos == NULL || data->pid == NULL)
 		exit(1);
 	init_philos(data, philos_qty, argv);
+	data->forks = sem_open("/sem_forks", O_CREAT, 0777, philos_qty);
 	while (i < philos_qty)
 	{
 		data->curr_philo = i;
