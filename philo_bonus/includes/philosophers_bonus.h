@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:02:11 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/13 14:12:43 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:42:17 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_BONUS_H
@@ -52,7 +52,7 @@ time_t		sec_to_milli(time_t seconds);
 time_t		milli_to_micro(time_t milliseconds);
 void		init_data(t_data *data, size_t philos_qty, char **argv);
 void		die(t_data *data);
-void		print_action(char *suffix, t_data *data);
+void		print_action(char *suffix, time_t init_ms, t_philo philo);
 void		solve_single_philo(t_data *data);
 
 #endif

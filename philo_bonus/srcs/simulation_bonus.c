@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:53:16 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/13 15:11:32 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:36:27 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -22,7 +22,7 @@ void	solve_single_philo(t_data *data)
 	if (pid == 0)
 	{
 		sem_wait(data->forks);
-		print_action("fork", data);
+		print_action("fork", data->ms_init, data->philos[0]);
 		usleep(data->philos[0].timers.time_to_die * 1000);
 		gettimeofday(&tv, NULL);
 		curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
