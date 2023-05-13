@@ -29,3 +29,13 @@ void	print_action(char *suffix, time_t init_ms, t_philo philo)
 	else if (ft_strcmp("fork", suffix) == 0)
 		printf("%ld\t%ld has taken a fork\n", time_elapsed, philo.id);
 }
+
+void	take_forks(t_data *data, t_philo *philo)
+{
+	if (philo->id % 2 == 0)
+		usleep(500);
+	sem_wait(data->forks);
+	print_action("fork", data->ms_init, *philo);
+	sem_wait(data->forks);
+	print_action("fork", data->ms_init, *philo);
+}
