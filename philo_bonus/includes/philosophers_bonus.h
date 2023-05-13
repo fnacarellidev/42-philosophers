@@ -54,6 +54,7 @@ void		init_data(t_data *data, size_t philos_qty, char **argv);
 void		die(t_data *data);
 void		print_action(char *suffix, time_t init_ms, t_philo philo);
 void		take_forks(t_data *data, t_philo *philo);
+void		eat(t_data *data, t_philo *philo);
 void		solve_single_philo(t_data *data);
 
 #endif

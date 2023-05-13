@@ -30,6 +30,13 @@ void	print_action(char *suffix, time_t init_ms, t_philo philo)
 		printf("%ld\t%ld has taken a fork\n", time_elapsed, philo.id);
 }
 
+void	kill_philo(t_data *data, unsigned int exit_code)
+{
+	sem_close(data->forks);
+	die(data);
+	exit(exit_code);
+}
+
 void	take_forks(t_data *data, t_philo *philo)
 {
 	if (philo->id % 2 == 0)
@@ -38,4 +45,20 @@ void	take_forks(t_data *data, t_philo *philo)
 	print_action("fork", data->ms_init, *philo);
 	sem_wait(data->forks);
 	print_action("fork", data->ms_init, *philo);
+}
+
+void	eat(t_data *data, t_philo *philo)
+{
+	struct timeval	tv;
+	time_t			curr_ms;
+
+	print_action("eating", data->ms_init, *philo);
+	if (philo->timers.time_to_die < philo->timers.time_to_eat)
+	{
+		usleep(1000 * philo->timers.time_to_die);
+		gettimeofday(&tv, NULL);
+		curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+		printf("%ld\t%ld died\n", curr_ms - data->ms_init, philo->id);
+		kill_philo(data, 1);
+	}
 }

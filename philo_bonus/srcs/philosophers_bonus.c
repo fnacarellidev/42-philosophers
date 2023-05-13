@@ -6,10 +6,44 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:14:32 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/13 15:11:04 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:52:13 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
+
+static void	kill_childs(t_data *data, size_t philos_qty)
+{
+	pid_t	pid;
+	size_t	i;
+
+	i = 0;
+	while (i < philos_qty)
+	{
+		pid = data->pid[i];
+		kill(pid, SIGKILL);
+		i++;
+	}
+}
+
+static void	loop_wait(t_data *data, size_t philos_qty)
+{
+	size_t	i;
+	int		exit_status;
+
+	i = 1;
+	waitpid(-1, &exit_status, 0);
+	if (philos_qty == 1)
+		return ;
+	exit_status = WEXITSTATUS(exit_status);
+	while (i < philos_qty && exit_status == 0)
+	{
+		waitpid(-1, &exit_status, 0);
+		exit_status = WEXITSTATUS(exit_status);
+		i++;
+	}
+	if (exit_status == 1)
+		kill_childs(data, philos_qty);
+}
 
 int	main(int argc, char **argv)
 {
