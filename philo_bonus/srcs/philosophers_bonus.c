@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:14:32 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/13 18:52:13 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:55:10 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -63,8 +63,7 @@ int	main(int argc, char **argv)
 		solve_single_philo(data);
 	else
 		solve_n_philos(data, philos_qty);
-	while (++i < philos_qty)
-		waitpid(-1, NULL, 0);
+	loop_wait(data, philos_qty);
 	die(data);
 	return (0);
 }
