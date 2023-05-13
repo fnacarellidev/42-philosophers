@@ -5,6 +5,7 @@ FILES		= philosophers_bonus \
 			  valid_args_bonus \
 			  init_bonus \
 			  philo_actions_bonus \
+			  simulation_bonus \
 			  aux_funcs_bonus/ft_atol_bonus \
 			  aux_funcs_bonus/ft_is_digit_bonus \
 			  aux_funcs_bonus/ft_is_sign_bonus \

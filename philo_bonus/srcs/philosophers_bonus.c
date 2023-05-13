@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 		return (1);
 	philos_qty = (size_t)ft_atol(argv[1]);
 	init_data(data, philos_qty, argv);
+	if (philos_qty == 1)
+		solve_single_philo(data);
 	while (++i < philos_qty)
 		waitpid(-1, NULL, 0);
 	die(data);

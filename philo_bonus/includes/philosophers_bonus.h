@@ -53,4 +53,6 @@ time_t		milli_to_micro(time_t milliseconds);
 void		init_data(t_data *data, size_t philos_qty, char **argv);
 void		die(t_data *data);
 void		print_action(char *suffix, t_data *data);
+void		solve_single_philo(t_data *data);
+
 #endif
