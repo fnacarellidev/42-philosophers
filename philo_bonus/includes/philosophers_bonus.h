@@ -52,4 +52,5 @@ time_t		sec_to_milli(time_t seconds);
 time_t		milli_to_micro(time_t milliseconds);
 void		init_data(t_data *data, size_t philos_qty, char **argv);
 void		die(t_data *data);
+void		print_action(char *suffix, t_data *data);
 #endif
