@@ -32,3 +32,30 @@ void	solve_single_philo(t_data *data)
 		exit(0);
 	}
 }
+
+static void	run_simulation(t_data *data)
+{
+	t_philo	philo;
+
+	philo = data->philos[data->curr_philo];
+	if (philo.id % 2 == 0)
+		usleep(50);
+	take_forks(data, &philo);
+	eat(data, &philo);
+	exit(0);
+}
+
+void	solve_n_philos(t_data *data, size_t philos_qty)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < philos_qty)
+	{
+		data->curr_philo = i;
+		data->pid[i] = fork();
+		if (data->pid[i] == 0)
+			run_simulation(data);
+		i++;
+	}
+}

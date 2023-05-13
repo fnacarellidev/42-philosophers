@@ -61,6 +61,8 @@ int	main(int argc, char **argv)
 	init_data(data, philos_qty, argv);
 	if (philos_qty == 1)
 		solve_single_philo(data);
+	else
+		solve_n_philos(data, philos_qty);
 	while (++i < philos_qty)
 		waitpid(-1, NULL, 0);
 	die(data);
