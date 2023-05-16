@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:02:55 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/16 13:38:09 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:28:05 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -44,6 +44,12 @@ void	take_forks(t_data *data, t_philo *philo)
 	sem_wait(data->forks);
 	print_action("fork", data->ms_init, *philo);
 	print_action("fork", data->ms_init, *philo);
+}
+
+void	drop_forks(t_data *data)
+{
+	sem_post(data->forks);
+	sem_post(data->forks);
 }
 
 void	eat(t_data *data, t_philo *philo)
