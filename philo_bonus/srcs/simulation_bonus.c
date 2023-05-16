@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:53:16 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/16 17:47:04 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:45:03 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -38,7 +38,7 @@ static void	run_simulation(t_data *data)
 	t_philo	philo;
 
 	philo = data->philos[data->curr_philo];
-	while (1)
+	while (1 && philo.meals != 0)
 	{
 		take_forks(data, &philo);
 		eat(data, &philo);
@@ -46,6 +46,7 @@ static void	run_simulation(t_data *data)
 		rest(data, &philo);
 		print_action("thinking", data->ms_init, philo);
 	}
+	exit(0);
 }
 
 void	solve_n_philos(t_data *data, size_t philos_qty)

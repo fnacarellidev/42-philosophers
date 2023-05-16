@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:02:55 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/16 17:41:59 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:34:15 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -82,6 +82,7 @@ void	eat(t_data *data, t_philo *philo)
 	gettimeofday(&tv, NULL);
 	curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	philo->timers.last_meal = curr_ms;
+	philo->meals--;
 }
 
 void	rest(t_data *data, t_philo *philo)
