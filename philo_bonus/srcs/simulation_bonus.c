@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:53:16 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/13 18:36:27 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:31:44 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -39,7 +39,7 @@ static void	run_simulation(t_data *data)
 
 	philo = data->philos[data->curr_philo];
 	if (philo.id % 2 == 0)
-		usleep(50);
+		usleep(500);
 	take_forks(data, &philo);
 	eat(data, &philo);
 	exit(0);

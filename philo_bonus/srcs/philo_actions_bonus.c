@@ -40,8 +40,6 @@ void	kill_philo(t_data *data, unsigned int exit_code)
 
 void	take_forks(t_data *data, t_philo *philo)
 {
-	if (philo->id % 2 == 0)
-		usleep(500);
 	sem_wait(data->forks);
 	print_action("fork", data->ms_init, *philo);
 	sem_wait(data->forks);
