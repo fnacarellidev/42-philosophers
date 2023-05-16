@@ -38,12 +38,13 @@ static void	run_simulation(t_data *data)
 	t_philo	philo;
 
 	philo = data->philos[data->curr_philo];
-	if (philo.id % 2 == 0)
-	take_forks(data, &philo);
-	eat(data, &philo);
-	drop_forks(data);
-	rest(data, &philo);
-	exit(0);
+	while (1)
+	{
+		take_forks(data, &philo);
+		eat(data, &philo);
+		drop_forks(data);
+		rest(data, &philo);
+	}
 }
 
 void	solve_n_philos(t_data *data, size_t philos_qty)
