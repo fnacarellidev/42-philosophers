@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:14:32 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/13 18:55:10 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/16 12:21:42 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -71,7 +71,9 @@ int	main(int argc, char **argv)
 void	die(t_data *data)
 {
 	sem_close(data->forks);
+	sem_close(data->print_sem);
 	sem_unlink("/sem_forks");
+	sem_unlink("/sem_print");
 	free(data->pid);
 	free(data->philos);
 	free(data);

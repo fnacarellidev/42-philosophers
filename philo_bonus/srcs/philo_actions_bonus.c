@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:02:55 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/13 18:40:17 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:38:09 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -33,6 +33,7 @@ void	print_action(char *suffix, time_t init_ms, t_philo philo)
 void	kill_philo(t_data *data, unsigned int exit_code)
 {
 	sem_close(data->forks);
+	sem_close(data->print_sem);
 	die(data);
 	exit(exit_code);
 }
@@ -58,6 +59,7 @@ void	eat(t_data *data, t_philo *philo)
 		usleep(1000 * philo->timers.time_to_die);
 		gettimeofday(&tv, NULL);
 		curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+		sem_wait(data->print_sem);
 		printf("%ld\t%ld died\n", curr_ms - data->ms_init, philo->id);
 		kill_philo(data, 1);
 	}

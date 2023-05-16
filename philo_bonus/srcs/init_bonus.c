@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:24:50 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/13 15:20:18 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/16 12:22:36 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -65,4 +65,5 @@ void	init_data(t_data *data, size_t philos_qty, char **argv)
 		exit(1);
 	init_philos(data, philos_qty, argv);
 	data->forks = sem_open("/sem_forks", O_CREAT, 0777, philos_qty);
+	data->print_sem = sem_open("/sem_print", O_CREAT, 0777, 1);
 }

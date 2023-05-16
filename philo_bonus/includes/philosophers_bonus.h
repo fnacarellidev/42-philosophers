@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:02:11 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/13 18:42:17 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/16 12:20:55 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_BONUS_H
@@ -36,6 +36,7 @@ typedef struct s_data
 	time_t	ms_init;
 	size_t	curr_philo;
 	sem_t	*forks;
+	sem_t	*print_sem;
 }	t_data;
 
 long int	ft_atol(const char *nptr);
