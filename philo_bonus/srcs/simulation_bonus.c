@@ -42,6 +42,7 @@ static void	run_simulation(t_data *data)
 	take_forks(data, &philo);
 	eat(data, &philo);
 	drop_forks(data);
+	rest(data, &philo);
 	exit(0);
 }
 

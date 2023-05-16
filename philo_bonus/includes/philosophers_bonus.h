@@ -59,5 +59,6 @@ void		eat(t_data *data, t_philo *philo);
 void		solve_single_philo(t_data *data);
 void		solve_n_philos(t_data *data, size_t philos_qty);
 void		drop_forks(t_data *data);
+void		rest(t_data *data, t_philo *philo);
 
 #endif

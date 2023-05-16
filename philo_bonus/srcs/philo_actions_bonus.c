@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:02:55 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/16 17:28:05 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:35:53 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -77,4 +77,28 @@ void	eat(t_data *data, t_philo *philo)
 	gettimeofday(&tv, NULL);
 	curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	philo->timers.last_meal = curr_ms;
+}
+
+void	rest(t_data *data, t_philo *philo)
+{
+	struct timeval	tv;
+	time_t			curr_ms;
+	time_t			death_timestamp;
+	time_t			action_timestamp;
+
+	gettimeofday(&tv, NULL);
+	curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	death_timestamp = philo->timers.last_meal + philo->timers.time_to_die;
+	action_timestamp = curr_ms + philo->timers.time_to_eat;
+	print_action("sleeping", data->ms_init, *philo);
+	if (action_timestamp > death_timestamp)
+	{
+		usleep((death_timestamp - curr_ms) * 1000);
+		sem_wait(data->print_sem);
+		gettimeofday(&tv, NULL);
+		curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+		printf("%ld\t%ld died\n", curr_ms - data->ms_init, philo->id);
+		kill_philo(data, 1);
+	}
+	usleep(philo->timers.time_to_eat * 1000);
 }
