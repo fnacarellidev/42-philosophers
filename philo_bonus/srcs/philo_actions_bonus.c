@@ -41,8 +41,8 @@ void	kill_philo(t_data *data, unsigned int exit_code)
 void	take_forks(t_data *data, t_philo *philo)
 {
 	sem_wait(data->forks);
-	print_action("fork", data->ms_init, *philo);
 	sem_wait(data->forks);
+	print_action("fork", data->ms_init, *philo);
 	print_action("fork", data->ms_init, *philo);
 }
 
