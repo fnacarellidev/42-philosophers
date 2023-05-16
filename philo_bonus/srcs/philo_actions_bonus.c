@@ -56,15 +56,25 @@ void	eat(t_data *data, t_philo *philo)
 {
 	struct timeval	tv;
 	time_t			curr_ms;
+	time_t			death_timestamp;
+	time_t			action_timestamp;
 
+	gettimeofday(&tv, NULL);
+	curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	death_timestamp = philo->timers.last_meal + philo->timers.time_to_die;
+	action_timestamp = curr_ms + philo->timers.time_to_eat;
 	print_action("eating", data->ms_init, *philo);
-	if (philo->timers.time_to_die < philo->timers.time_to_eat)
+	if (action_timestamp > death_timestamp)
 	{
-		usleep(1000 * philo->timers.time_to_die);
+		usleep((death_timestamp - curr_ms) * 1000);
+		sem_wait(data->print_sem);
 		gettimeofday(&tv, NULL);
 		curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
-		sem_wait(data->print_sem);
 		printf("%ld\t%ld died\n", curr_ms - data->ms_init, philo->id);
 		kill_philo(data, 1);
 	}
+	usleep(philo->timers.time_to_eat * 1000);
+	gettimeofday(&tv, NULL);
+	curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	philo->timers.last_meal = curr_ms;
 }
