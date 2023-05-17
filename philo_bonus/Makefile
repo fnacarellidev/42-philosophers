@@ -22,6 +22,8 @@ CFLAGS		= -g3 -Wall -Wextra -Werror
 
 all : $(NAME)
 
+bonus: all
+
 $(NAME) : $(OBJS)
 	cc $(CFLAGS) -o $(NAME) $(OBJS) -lpthread
 
