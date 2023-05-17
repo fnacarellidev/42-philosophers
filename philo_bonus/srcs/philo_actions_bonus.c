@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:02:55 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/17 12:33:45 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/17 14:22:21 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -50,8 +50,10 @@ void	eat(t_data *data, t_philo *philo)
 	curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	death_timestamp = philo->timers.last_meal + philo->timers.time_to_die;
 	action_timestamp = curr_ms + philo->timers.time_to_eat;
+	sem_wait(data->print_sem);
 	print_action("eating", data->ms_init, *philo);
-	if (action_timestamp > death_timestamp)
+	sem_post(data->print_sem);
+	if (action_timestamp >= death_timestamp)
 		kill_philo(data, philo);
 	usleep(philo->timers.time_to_eat * 1000);
 	gettimeofday(&tv, NULL);
@@ -72,15 +74,19 @@ void	rest(t_data *data, t_philo *philo)
 	gettimeofday(&tv, NULL);
 	curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	death_timestamp = philo->timers.last_meal + philo->timers.time_to_die;
-	action_timestamp = curr_ms + philo->timers.time_to_eat;
+	action_timestamp = curr_ms + philo->timers.time_to_sleep;
+	sem_wait(data->print_sem);
 	print_action("sleeping", data->ms_init, *philo);
-	if (action_timestamp > death_timestamp)
+	sem_post(data->print_sem);
+	if (action_timestamp >= death_timestamp)
 		kill_philo(data, philo);
 	usleep(philo->timers.time_to_sleep * 1000);
 }
 
 void	think(t_data *data, t_philo *philo)
 {
+	sem_wait(data->print_sem);
 	print_action("thinking", data->ms_init, *philo);
+	sem_post(data->print_sem);
 	usleep(500);
 }
