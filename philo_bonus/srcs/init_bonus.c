@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:24:50 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/16 17:07:11 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:27:37 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -14,10 +14,10 @@
 static void	init_timers(t_data *data, size_t philos_qty, char **argv)
 {
 	size_t			i;
+	struct timeval	tv;
 	time_t			time_to_die;
 	time_t			time_to_eat;
 	time_t			time_to_sleep;
-	struct timeval	tv;
 
 	i = 0;
 	gettimeofday(&tv, NULL);
@@ -53,10 +53,8 @@ static void	init_philos(t_data *data, size_t philos_qty, char **argv)
 
 void	init_data(t_data *data, size_t philos_qty, char **argv)
 {
-	size_t			i;
 	struct timeval	tv;
 
-	i = 0;
 	gettimeofday(&tv, NULL);
 	data->ms_init = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	data->philos = malloc(sizeof(t_philo) * philos_qty);

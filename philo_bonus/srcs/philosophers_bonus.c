@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:14:32 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/16 12:21:42 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:27:47 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -47,11 +47,9 @@ static void	loop_wait(t_data *data, size_t philos_qty)
 
 int	main(int argc, char **argv)
 {
-	size_t	i;
 	t_data	*data;
 	size_t	philos_qty;
 
-	i = -1;
 	if (!valid_args(argc - 1, argv))
 		return (1);
 	data = malloc(sizeof(t_data));
