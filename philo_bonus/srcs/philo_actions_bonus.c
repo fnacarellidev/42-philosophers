@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:02:55 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/16 19:06:05 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:28:41 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -58,12 +58,6 @@ void	take_forks(t_data *data, t_philo *philo)
 	print_action("fork", data->ms_init, *philo);
 }
 
-void	drop_forks(t_data *data)
-{
-	sem_post(data->forks);
-	sem_post(data->forks);
-}
-
 void	eat(t_data *data, t_philo *philo)
 {
 	struct timeval	tv;
@@ -83,6 +77,8 @@ void	eat(t_data *data, t_philo *philo)
 	curr_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	philo->timers.last_meal = curr_ms;
 	philo->meals--;
+	sem_post(data->forks);
+	sem_post(data->forks);
 }
 
 void	rest(t_data *data, t_philo *philo)
