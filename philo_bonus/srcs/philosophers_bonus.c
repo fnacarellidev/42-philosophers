@@ -6,12 +6,13 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:14:32 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/17 13:03:16 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/17 18:16:20 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
 
 static void	loop_wait(t_data *data, size_t philos_qty);
+static int	less_than_zero_param(t_data *data);
 
 int	main(int argc, char **argv)
 {
@@ -25,6 +26,11 @@ int	main(int argc, char **argv)
 		return (1);
 	philos_qty = (size_t)ft_atol(argv[1]);
 	init_data(data, philos_qty, argv);
+	if (less_than_zero_param(data))
+	{
+		die(data);
+		exit(1);
+	}
 	if (philos_qty == 1)
 		solve_single_philo(data);
 	else
@@ -66,6 +72,20 @@ static void	loop_wait(t_data *data, size_t philos_qty)
 	}
 	if (exit_status == 1)
 		kill_childs(data, philos_qty);
+}
+
+static int	less_than_zero_param(t_data *data)
+{
+	t_philo	philo;
+
+	philo = data->philos[0];
+	if (philo.timers.time_to_die < 1 || philo.timers.time_to_eat < 1 \
+			|| philo.timers.time_to_sleep < 1)
+	{
+		write(2, "Timers should be bigger than zero.\n", 35);
+		return (1);
+	}
+	return (0);
 }
 
 void	die(t_data *data)
