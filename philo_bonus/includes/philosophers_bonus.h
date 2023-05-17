@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:02:11 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/17 12:31:47 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:33:56 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_BONUS_H
@@ -59,6 +59,7 @@ void		eat(t_data *data, t_philo *philo);
 void		solve_single_philo(t_data *data);
 void		solve_n_philos(t_data *data, size_t philos_qty);
 void		rest(t_data *data, t_philo *philo);
+void		think(t_data *data, t_philo *philo);
 void		print_action(char *suffix, time_t init_ms, t_philo philo);
 
 #endif
