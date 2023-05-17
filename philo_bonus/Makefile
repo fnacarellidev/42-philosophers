@@ -13,7 +13,8 @@ FILES		= philosophers_bonus \
 			  aux_funcs_bonus/is_number_bonus \
 			  aux_funcs_bonus/print_error_bonus \
 			  aux_funcs_bonus/time_bonus \
-			  aux_funcs_bonus/ft_strcmp_bonus
+			  aux_funcs_bonus/ft_strcmp_bonus \
+			  aux_funcs_bonus/print_action_bonus
 
 SRCS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .c, $(FILES)))
 OBJS		= $(addprefix $(SRCS_PATH)/, $(addsuffix .o, $(FILES)))
