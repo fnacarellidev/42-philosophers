@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:02:55 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/16 18:34:15 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/16 19:06:05 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -99,5 +99,5 @@ void	rest(t_data *data, t_philo *philo)
 	print_action("sleeping", data->ms_init, *philo);
 	if (action_timestamp > death_timestamp)
 		kill_philo(data, philo);
-	usleep(philo->timers.time_to_eat * 1000);
+	usleep(philo->timers.time_to_sleep * 1000);
 }
