@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:53:16 by fnacarel          #+#    #+#             */
-/*   Updated: 2023/05/17 12:34:12 by fnacarel         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:53:06 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philosophers_bonus.h"
@@ -45,6 +45,7 @@ static void	run_simulation(t_data *data)
 		rest(data, &philo);
 		think(data, &philo);
 	}
+	die(data);
 	exit(0);
 }
 
